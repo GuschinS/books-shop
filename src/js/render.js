@@ -5,15 +5,16 @@ import { Overlay } from "./overlay";
 import { CartCard } from "./cart-card";
 import { toggleBinStatus } from "./bin-status";
 
-const app = newTag("div", { className: "app" });
-
-app.append(new Header().render());
-app.append(new Main().render());
-app.append(new Overlay().render());
-document.body.append(app);
+// const app = newTag("div", { className: "app" });
+const app = document.querySelector(".app");
+if (app) {
+  app.append(new Header().render());
+  app.append(new Main().render());
+  app.append(new Overlay().render());
+}
+// document.body.append(app);
 const cartContainer = document.querySelector(".cart-container");
 const catalogContainer = document.querySelector(".catalog-container");
-const finish = document.querySelector(".finish-wrapper");
 
 const cartEventListener = () => {
   cartContainer.classList.remove("none");
@@ -24,7 +25,6 @@ cartButton.addEventListener("click", cartEventListener);
 
 const logoEventListener = () => {
   cartContainer.classList.add("none");
-  finish.classList.add("none");
   catalogContainer.classList.remove("none");
 };
 const logo = document.querySelector(".logo");
@@ -49,7 +49,9 @@ function getFromLocalStorage() {
 }
 
 // add cards to Cart
-getFromLocalStorage().forEach((productInfo) => {
-  cartLists.append(new CartCard(productInfo).renderCard());
-  toggleBinStatus();
-});
+if (app) {
+  getFromLocalStorage().forEach((productInfo) => {
+    cartLists.append(new CartCard(productInfo).renderCard());
+    toggleBinStatus();
+  });
+}

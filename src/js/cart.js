@@ -66,7 +66,6 @@ class Cart {
   listenEvents() {
     this.binWrapper.ondragover = (event) => event.preventDefault();
     this.btnConfirm.addEventListener("click", () => {
-      // this.openOrderPage();
       this.setToLocalStorage();
       const cartContainer = document.querySelector(".cart-container");
       const catalogContainer = document.querySelector(".catalog-container");
@@ -76,9 +75,7 @@ class Cart {
       formWrapper.classList.remove("none");
     });
   }
-  // openOrderPage() {
-  //   window.location.href = "../order.html";
-  // }
+
   getOrderList() {
     let orderList = [];
     const list = document.querySelectorAll(".bin-card-wrapper");
@@ -103,8 +100,11 @@ class Cart {
     const totalPrice = this.getTotalPrice();
 
     localStorage.setItem("storedProducts", JSON.stringify(arrayProducts));
-
     localStorage.setItem("totalPrice", totalPrice);
+    localStorage.setItem(
+      "counterInCart.textContent",
+      counterInCart.textContent
+    );
   }
 }
 

@@ -24,25 +24,24 @@ class ButtonRemove {
     });
   }
   deleteCard(event) {
+    const counterInCart = document.querySelector(".cart__counter");
     if (event.target.closest("#btn-remove-all")) {
       const list = document.querySelectorAll(".bin-card-wrapper");
+      counterInCart.textContent = 0;
       for (let card of list) {
         card.remove();
         this.setToLocalStorage();
       }
-      const counterInCart = document.querySelector(".cart__counter");
-      counterInCart.textContent = 0;
-      localStorage.setItem(
-        "counterInCart.textContent",
-        counterInCart.textContent
-      );
       resetTotalPrice();
     } else {
       const card = event.target.closest(".bin-card-wrapper");
       const price = card.querySelector(".price").innerText;
       const count = card.querySelector(".count").innerText;
+      console.log("count: ", count);
       decreaseTotalPrice(price * count);
       card.remove();
+      counterInCart.textContent -= count;
+      this.setToLocalStorage();
     }
     //Bin status display
     toggleBinStatus();
@@ -69,10 +68,14 @@ class ButtonRemove {
   setToLocalStorage() {
     const arrayProducts = this.getOrderList();
     const totalPrice = this.getTotalPrice();
+    const counterInCart = document.querySelector(".cart__counter");
 
     localStorage.setItem("storedProducts", JSON.stringify(arrayProducts));
-
     localStorage.setItem("totalPrice", totalPrice);
+    localStorage.setItem(
+      "counterInCart.textContent",
+      counterInCart.textContent
+    );
   }
 }
 

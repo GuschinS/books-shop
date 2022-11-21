@@ -8,8 +8,11 @@ async function getBooks() {
     console.log(error);
   }
 }
+const app = document.querySelector(".app");
 
-getBooks();
+if (app) {
+  getBooks();
+}
 
 function renderProducts(array) {
   let fragment = new DocumentFragment();
