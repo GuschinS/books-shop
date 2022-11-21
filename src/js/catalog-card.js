@@ -116,7 +116,6 @@ class CatalogCard {
     const itemInBin = binWrapper.querySelector(
       `[data-id = "${productInfo.id}"]`
     );
-    console.log(binWrapper.querySelector(`[data-id = "${productInfo.id}"]`));
 
     if (itemInBin) {
       const counterElement = itemInBin.querySelector(".count");

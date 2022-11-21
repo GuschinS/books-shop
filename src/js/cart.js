@@ -98,6 +98,7 @@ class Cart {
   setToLocalStorage() {
     const arrayProducts = this.getOrderList();
     const totalPrice = this.getTotalPrice();
+    const counterInCart = document.querySelector(".cart__counter");
 
     localStorage.setItem("storedProducts", JSON.stringify(arrayProducts));
     localStorage.setItem("totalPrice", totalPrice);
