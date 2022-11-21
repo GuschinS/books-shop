@@ -22,7 +22,7 @@ const createdOrder = () => {
 };
 const reset = () => {
   localStorage.clear();
-  window.location = "../index.html";
+  window.location = "../dist/index.html";
 };
 if (order) {
   const closeButton = document.querySelector(".close-button");

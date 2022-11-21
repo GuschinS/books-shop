@@ -8,7 +8,7 @@ class Form {
 
     this.form = newTag("form", {
       className: "order-form",
-      action: "../order.html",
+      action: "../dist/order.html",
     });
 
     this.nameLabel = newTag("label", {
