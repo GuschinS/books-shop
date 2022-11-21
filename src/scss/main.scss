@@ -1,6 +1,8 @@
 @import "../scss/base/normalize";
 @import "abstracts/color-styles";
 @import "../scss/components/header";
+@import "../scss/components/book";
+@import "../scss/components/books-catalog";
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
