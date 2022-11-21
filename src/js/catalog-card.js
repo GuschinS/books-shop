@@ -75,15 +75,14 @@ class CatalogCard {
     return this.cardContainer;
   }
   listenEvents() {
-    // this.cardContainer.addEventListener("dragend", (event) =>
-    //   this.addToBin(event)
-    // );
+    this.cardContainer.addEventListener("dragend", (event) =>
+      this.addToBin(event)
+    );
     this.btnOpenModal.addEventListener("click", () =>
       this.openModal(this.imageLink, this.author, this.title, this.description)
     );
     this.btnBin.addEventListener("click", (event) => {
       this.addToBin(event);
-      // this.getOrderList();
       this.setToLocalStorage();
     });
   }
@@ -117,7 +116,7 @@ class CatalogCard {
     const itemInBin = binWrapper.querySelector(
       `[data-id = "${productInfo.id}"]`
     );
-    // if the item is in the bin and else
+    console.log(binWrapper.querySelector(`[data-id = "${productInfo.id}"]`));
 
     if (itemInBin) {
       const counterElement = itemInBin.querySelector(".count");
@@ -132,6 +131,7 @@ class CatalogCard {
     //reset the counter
     card.querySelector(".count").innerText = "1";
   }
+
   openModal(imageLink, author, title, description) {
     new Modal(imageLink, author, title, description).openModal();
   }
