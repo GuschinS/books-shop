@@ -30,6 +30,10 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html",
     }),
+    new HtmlWebPackPlugin({
+      template: "./src/order.html",
+      filename: "./order.html",
+    }),
   ],
   module: {
     rules: [
