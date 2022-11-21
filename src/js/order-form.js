@@ -74,7 +74,7 @@ class Form {
       className: "flat-input input",
       type: "text",
       required: true,
-      pattern: "^[0-9]+[0-9-]+[0-9]*$",
+      pattern: "^[1-9–]+[-0-9–]*$",
     });
 
     this.fieldset = newTag("fieldset");
